@@ -30,10 +30,13 @@ async def select_lang(msg:Message):
     text = pytesseract.image_to_string(img, lang="uzb")
     # print(text)
     #await msg.answer(text)
+    if text == "":
+        await msg.answer("Rasm sifati yaxshi emas iltimos boshqa rasm yuboring!!!")
+    else:
+        await msg.answer(to_cyrillic(text))
 
-    await msg.answer(to_cyrillic(text))
+        await msg.answer(to_latin(text))
 
-    await msg.answer(to_latin(text))
 
 @dp.message_handler(text_contains="ru")
 async def select_lang(msg:Message):
@@ -42,10 +45,12 @@ async def select_lang(msg:Message):
     text = pytesseract.image_to_string(img, lang="rus")
     # print(text)
     #await msg.answer(text)
+    if text == "":
+        await msg.answer("Rasm sifati yaxshi emas iltimos boshqa rasm yuboring!!!")
+    else:
+        await msg.answer(to_cyrillic(text))
 
-    await msg.answer(to_cyrillic(text))
-
-    await msg.answer(to_latin(text))
+        await msg.answer(to_latin(text))
 
 @dp.message_handler(text_contains="eng")
 async def select_lang(msg:Message):
@@ -55,9 +60,28 @@ async def select_lang(msg:Message):
     # print(text)
     #await msg.answer(text)
 
-    await msg.answer(to_cyrillic(text))
+    if text == "":
+        await msg.answer("Rasm sifati yaxshi emas iltimos boshqa rasm yuboring!!!")
+    else:
+        await msg.answer(to_cyrillic(text))
 
-    await msg.answer(to_latin(text))
+        await msg.answer(to_latin(text))
+
+@dp.message_handler(text_contains="kiril")
+async def select_lang(msg:Message):
+    img = Image.open("image.png")
+    pytesseract.pytesseract.tesseract_cmd = r"C:\\Program Files\\Tesseract-OCR\\tesseract.exe"
+    text = pytesseract.image_to_string(img, lang="uzb_cyrl")
+    # print(text)
+
+    if text == "":
+        await msg.answer("Rasm sifati yaxshi emas iltimos boshqa rasm yuboring!!!")
+    else:
+        await msg.answer(text)
+
+        await msg.answer(to_latin(text))
+
+
 
 
 

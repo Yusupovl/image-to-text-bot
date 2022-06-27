@@ -6,7 +6,7 @@ from loader import dp
 
 @dp.message_handler(CommandHelp())
 async def bot_help(message: types.Message):
-    text = ("Buyruqlar: ",
+    text = ("Rasmli ma'lumotni matn formatiga o'tkazish uchun botga rasmni yuborishingiz va kerakli tilni tanlashingiz  kifoya: ",
             "/start - Botni ishga tushirish",
             "/help - Yordam")
     
